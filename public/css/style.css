@@ -1,0 +1,27 @@
+.boxStyle {
+    width: 33%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+.boxStyleRight {
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+.height-50{
+    height:50px;
+}
+.resultBox {
+    text-align: center;
+    padding: 10px;
+}
+.w-80{
+    width: 80%;
+}
+.w-20{
+    width: 20%;
+}
+.w-66{
+    width: 66%;
+}
