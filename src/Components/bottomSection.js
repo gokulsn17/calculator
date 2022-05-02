@@ -2,11 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRedux, value } from '../Redux/reducers/reducer';
 
-const Numbers = () => {
+const BottomSection = () =>{
 
     const dispatch = useDispatch();
-    const numbers = ["1","2","3","4","5","6","7","8","9"];
     const result = useSelector(value);
+    const data = ["0","(",")"];
 
     const inputHandler = (data) => {
         dispatch(updateRedux({
@@ -14,22 +14,31 @@ const Numbers = () => {
             result: result + data
         }))
     }
+
     return(
-        <div className = "d-flex flex-wrap w-75">
+        <div className = "d-flex">
             {
-                numbers.map((item,i) => {
+                data.map((item, i) => {
                     return(
-                        <div key = {i} 
-                            className = "boxStyle"
+                        <div 
+                            key = {i}
+                            className = "w-20 boxStyle"
                             onClick = {() => inputHandler(item)}
                         >
                             {item}
                         </div>
                     )
-                })   
+                })
             }
+            <button
+                type = "button"  
+                className = "w-40 height-50" 
+                onClick = {() => {}}
+            >
+                =
+            </button>
         </div>
     )
 }
 
-export default Numbers;
+export default BottomSection;
