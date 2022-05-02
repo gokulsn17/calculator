@@ -6,7 +6,7 @@ import RightSection from "./rightSection";
 
 const Calculator = () => {
 
-    return( 
+    return(
         <div className = "d-flex flex-column">
             <Result />
             <div className = "d-flex flex-row">

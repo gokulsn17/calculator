@@ -7,6 +7,13 @@ const RightSection1 = () => {
     const dispatch = useDispatch();
     const result = useSelector(value);
 
+    const copyHandler = () => {
+        var copyText = document.getElementById("inputFeild");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+        console.log("Copied the text: " + copyText.value);
+    }
     return(
         <div className = "d-flex w-20 flex-column">
             <button
@@ -43,7 +50,7 @@ const RightSection1 = () => {
             <button
                 type = "button"  
                 className = "height-50"
-                onClick = {() => {}}
+                onClick = {() => copyHandler()}
             >
                 COPY  
             </button>
