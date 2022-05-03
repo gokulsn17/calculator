@@ -8,12 +8,10 @@ const RightSection1 = () => {
     const result = useSelector(value);
 
     const copyHandler = () => {
-        var copyText = document.getElementById("inputFeild");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(copyText.value);
-        console.log("Copied the text: " + copyText.value);
+        navigator.clipboard.writeText(result);
+        console.log("Copied the text: " + result);
     }
+
     return(
         <div className = "d-flex w-20 flex-column">
             <button

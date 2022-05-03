@@ -1,11 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRedux, value } from '../Redux/reducers/reducer';
+import { updateRedux, value, history } from '../Redux/reducers/reducer';
 
 const BottomSection = () =>{
 
     const dispatch = useDispatch();
     const result = useSelector(value);
+    const undoArray = useSelector(history);
     const data = ["0","(",")"];
 
     const inputHandler = (data) => {
@@ -36,9 +37,15 @@ const BottomSection = () =>{
         }
         if(output){
             dispatch(updateRedux({
+                key:"history",
+                result: [...undoArray,{result:output}]
+            }))
+            dispatch(updateRedux({
                 key:"value",
                 result: output
             }))
+        } else {
+            console.log("error")
         }
     }
 
@@ -49,6 +56,10 @@ const BottomSection = () =>{
             let parsed = parseString(result);
             if(parsed){
                 let output = calculate(parsed);
+                dispatch(updateRedux({
+                    key:"history",
+                    result: [...undoArray,{result:output}]
+                }))
                 if(output){
                     dispatch(updateRedux({
                         key:"value",

@@ -16,5 +16,6 @@ export const calculatorSlice = createSlice({
 export const { updateRedux } = calculatorSlice.actions;
 
 export const value = (state) => state.calculator.value;
+export const history = (state) => state.calculator.history;
 
 export default calculatorSlice.reducer;
