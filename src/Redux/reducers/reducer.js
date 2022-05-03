@@ -4,6 +4,7 @@ export const calculatorSlice = createSlice({
     name: 'calculator',
     initialState: {
         value: "",
+        history: []
     },
     reducers: {
         updateRedux: (state, data) => {

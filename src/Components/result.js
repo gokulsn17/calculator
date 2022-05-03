@@ -14,7 +14,7 @@ const Result = () => {
     },[]);
 
     const clearActions =  (event) => {
-        if(localStorage.getItem("active") != "true"){
+        if(localStorage.getItem("active") !== "true" || event.key === "Delete"){
             switch (event.key) {
                 case "Backspace":
                     let str = document.getElementById("inputFeild").value;
