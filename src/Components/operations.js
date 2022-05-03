@@ -23,29 +23,37 @@ const Operations = () => {
 
     return(
         <div className = "d-flex w-100">
+            <div className = "boxStyle">
+              <div
+                  className = "actionButtonStyle"
+                  onClick = {() => inputHandler("+")}
+              >
+                  + 
+              </div>
+            </div>
+           <div className = "boxStyle">
             <div
-                className = "boxStyle"
-                onClick = {() => inputHandler("+")}
-            >
-                + 
+                  className = "actionButtonStyle"
+                  onClick = {() => inputHandler("-")}
+              >
+                  -
+              </div>
+           </div>
+            <div className = "boxStyle">
+              <div 
+                  className = "actionButtonStyle"
+                  onClick = {() => inputHandler("/")}
+              >
+                  / 
+              </div>
             </div>
-            <div
-                className = "boxStyle"
-                onClick = {() => inputHandler("-")}
-            >
-                -
-            </div>
-            <div 
-                className = "boxStyle"
-                onClick = {() => inputHandler("/")}
-            >
-                / 
-            </div>
-            <div 
-                className = "boxStyle"
-                onClick = {() => inputHandler("*")}
-            >
-                *  
+            <div className = "boxStyle">
+              <div 
+                  className = "actionButtonStyle"
+                  onClick = {() => inputHandler("*")}
+              >
+                  *  
+              </div>
             </div>
         </div>
     )

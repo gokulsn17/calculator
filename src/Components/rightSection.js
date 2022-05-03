@@ -41,62 +41,69 @@ const RightSection1 = () => {
     }
 
     return(
-        <div className = "d-flex w-20 flex-column">
-            <button
-                type = "button" 
-                className = "height-50"
-                onClick = {() => { 
-                    dispatch(updateRedux({
-                        key:"value",
-                        result: ""
-                    }))
-                    dispatch(updateRedux({
-                        key:"history",
-                        result: []
-                    }))
-                    if(error){
+        <div className = "d-flex w-20 flex-column" style={{marginTop:"10px"}}>
+            <div className = "boxStyleRight">
+                <button
+                    type = "button" 
+                    className = "cButtonStyle"
+                    onClick = {() => { 
                         dispatch(updateRedux({
-                            key:"errorText",
+                            key:"value",
                             result: ""
                         }))
-                    }
-                }}
-            >
-                CE 
-            </button>
-            <button
-                type = "button" 
-                className = "height-50"
-                onClick = {() => { 
-                    dispatch(updateRedux({
-                        key:"value",
-                        result: result ? result.toString().slice(0,-1) : ""
-                    }))
-                    if(error){
                         dispatch(updateRedux({
-                            key:"errorText",
-                            result: ""
+                            key:"history",
+                            result: []
                         }))
-                    }
-                }}
-            >
-                C 
-            </button>
-            <button
-                type = "button"  
-                className = "height-50"
-                onClick = {() => undoHandler()}
-            >
-                UNDO  
-            </button>
-            <button
-                type = "button"  
-                className = "height-50"
-                onClick = {() => copyHandler()}
-            >
-                COPY  
-            </button>
-           
+                        if(error){
+                            dispatch(updateRedux({
+                                key:"errorText",
+                                result: ""
+                            }))
+                        }
+                    }}
+                >
+                    CE 
+                </button>
+            </div>
+            <div className = "boxStyleRight">
+                <button 
+                    type = "button" 
+                    className = "cButtonStyle cButtonMargin"
+                    onClick = {() => { 
+                        dispatch(updateRedux({
+                            key:"value",
+                            result: result ? result.toString().slice(0,-1) : ""
+                        }))
+                        if(error){
+                            dispatch(updateRedux({
+                                key:"errorText",
+                                result: ""
+                            }))
+                        }
+                    }}
+                >
+                    C 
+                </button>
+            </div>
+            <div className = "boxStyleRight">
+                <button
+                    type = "button"  
+                    className = "cButtonStyle"
+                    onClick = {() => undoHandler()}
+                >
+                    UNDO  
+                </button>
+            </div>
+            <div className = "boxStyleRight">
+                <button
+                    type = "button"  
+                    className = "cButtonStyle"
+                    onClick = {() => copyHandler()}
+                >
+                    COPY  
+                </button>
+            </div>
         </div>
     )
 }

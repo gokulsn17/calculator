@@ -17,19 +17,19 @@ const TignometricButtons = () => {
     return(
         <div className = "d-flex w-25 flex-column">
              <div 
-                className = "boxStyleRight"
+                className = "boxStyleRight actionButtonStyle"
                 onClick = {() => inputHandler("sin")}
             >
                 sin
             </div>
             <div 
-                className = "boxStyleRight"
+                className = "boxStyleRight actionButtonStyle"
                 onClick = {() => inputHandler("cos")}
             >
                 cos
             </div>
             <div 
-                className = "boxStyleRight"
+                className = "boxStyleRight actionButtonStyle"
                 onClick = {() => inputHandler("tan")}
             >
                 tan

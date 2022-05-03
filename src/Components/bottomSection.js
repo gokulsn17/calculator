@@ -54,7 +54,8 @@ const BottomSection = () =>{
 
     const endsWithNumber = (str) => {
         return str.charAt(str.length-1) == ")" ? true : isNaN(str.slice(-1)) ? false : true;
-      }
+    }
+    
     const resultHandler = (result) => {
         if(result.length === 0){
             dispatch(updateRedux({
@@ -161,23 +162,27 @@ const BottomSection = () =>{
             {
                 data.map((item, i) => {
                     return(
+                      <div className = "w-20 boxStyle">
                         <div 
                             key = {i}
-                            className = "w-20 boxStyle"
+                            className = "numberButtonStyle"
                             onClick = {() => inputHandler(item)}
                         >
                             {item}
                         </div>
+                      </div>
                     )
                 })
             }
-            <button
-                type = "button"  
-                className = "w-40 height-50" 
-                onClick = {() => resultHandler(result)}
-            >
-                =
-            </button>
+            <div className = "w-40 boxStyleRight">
+              <button
+                  type = "button"
+                  className = "sumButtonStyle" 
+                  onClick = {() => resultHandler(result)}
+              >
+                  =
+              </button>
+            </div>
         </div>
     )
 }

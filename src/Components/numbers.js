@@ -26,12 +26,13 @@ const Numbers = () => {
             {
                 numbers.map((item,i) => {
                     return(
+                      <div className = "boxStyle">
                         <div key = {i} 
-                            className = "boxStyle"
-                            onClick = {() => inputHandler(item)}
-                        >
+                            className = "numberButtonStyle"
+                            onClick = {() => inputHandler(item)} >
                             {item}
                         </div>
+                      </div>
                     )
                 })   
             }

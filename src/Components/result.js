@@ -54,6 +54,7 @@ const Result = () => {
             type = "text" 
             value = {result} 
             className = "resultBox" 
+            autoComplete = "new-password"
             onChange = {(e) => {
                     dispatch(updateRedux({
                         key:"value",
