@@ -10,14 +10,16 @@ const Calculator = () => {
 
     return(
         <div className = "d-flex flex-column p-3">
-            <Question />
-            <Error />
-            <Result />
-            <div className = "d-flex flex-row ">
-                <LeftSection />
-                <RightSection />
+            <div className="contentDiv">
+                <Question />
+                <Result />
+                <Error />
+                <div className = "d-flex flex-row ">
+                    <LeftSection />
+                    <RightSection />
+                </div>
+                <BottomSection />
             </div>
-            <BottomSection />
         </div>
     )
 }

@@ -8,7 +8,7 @@ const Error = () => {
 
     return(
         <div className = "d-flex">
-            <p className = "errorText">{error}</p>
+            <p className = "errorText errorHeight">{error}</p>
         </div>
     )
     
