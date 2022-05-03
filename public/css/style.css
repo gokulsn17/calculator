@@ -31,3 +31,10 @@
 .w-60{
     width: 60%;
 }
+.outputDiv{
+    visibility: hidden;
+    height: 72px;
+}
+.errorText{
+    color:red;
+}

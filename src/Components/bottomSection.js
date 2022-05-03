@@ -21,18 +21,18 @@ const BottomSection = () =>{
         switch (result.trim().slice(0,3)) {
             case "sin":
                 output = Math.sin(result.trim().slice(3,result.trim().length))
-                console.log(output);
                 break;
             case "cos":
                 output = Math.cos(result.trim().slice(3,result.trim().length))
-                console.log(output);
                 break;
             case "tan":
                 output = Math.tan(result.trim().slice(3,result.trim().length))
-                console.log(output);
                 break;
             default:
-                console.log("error")
+                dispatch(updateRedux({
+                    key:"errorText",
+                    result: "please enter in this format 'sin 45'"
+                }))
                 break;
         }
         if(output){
@@ -45,34 +45,64 @@ const BottomSection = () =>{
                 result: output
             }))
         } else {
-            console.log("error")
+            dispatch(updateRedux({
+                key:"errorText",
+                result: "please enter in this format eg :'sin 45'"
+            }))
         }
     }
 
-    const resultHandler = () => {
-        if(result.includes("sin") || result.includes("cos") || result.includes("tan")){
+    const endsWithNumber = (str) => {
+        return str.charAt(str.length-1) == ")" ? true : isNaN(str.slice(-1)) ? false : true;
+      }
+    const resultHandler = (result) => {
+        if(result.length === 0){
+            dispatch(updateRedux({
+                key:"errorText",
+                result: "please enter a input"
+            }))
+        } else if(!endsWithNumber(result)){
+            dispatch(updateRedux({
+                key:"errorText",
+                result: "invalid input please check"
+            }))
+        } else if(result.includes("sin") || result.includes("cos") || result.includes("tan")){
             trignometricHandler()
-        } else{
-            let parsed = parseString(result);
-            if(parsed){
-                let output = calculate(parsed);
+        } else {
+            if(result.includes("(") && result.includes(")")){
                 dispatch(updateRedux({
-                    key:"history",
-                    result: [...undoArray,{[result]:output}]
+                    key:"errorText",
+                    result: "sorry we are working on calculations inluding paranthesis"
                 }))
-                if(output){
-                    dispatch(updateRedux({
-                        key:"value",
-                        result: output
-                    }))
+            } else{
+                let parsed = parseString(result);
+                if(parsed){
+                    let output = calculate(parsed);
+                    if(output){
+                        dispatch(updateRedux({
+                            key:"history",
+                            result: [...undoArray,{[result]:output}]
+                        }))
+                        dispatch(updateRedux({
+                            key:"value",
+                            result: output
+                        }))
+                    } else {
+                        dispatch(updateRedux({
+                            key:"errorText",
+                            result: "invalid input please check"
+                        }))
+                    }
                 } else {
-                    console.log("error")
+                    dispatch(updateRedux({
+                        key:"errorText",
+                        result: "invalid input please check"
+                    }))
                 }
-            } else {
-                console.log("error")
             }
         }
     }
+
     const parseString = (s) => {
 
         var calculation = [],
@@ -120,7 +150,6 @@ const BottomSection = () =>{
             result = [];
         }
         if (data.length > 1) {
-            console.log('Error: unable to resolve calculation');
             return false;
         } else {
             return data[0];
@@ -128,7 +157,7 @@ const BottomSection = () =>{
     }
 
     return(
-        <div className = "d-flex">
+        <div className = "d-flex ">
             {
                 data.map((item, i) => {
                     return(
@@ -145,7 +174,7 @@ const BottomSection = () =>{
             <button
                 type = "button"  
                 className = "w-40 height-50" 
-                onClick = {() => resultHandler()}
+                onClick = {() => resultHandler(result)}
             >
                 =
             </button>
