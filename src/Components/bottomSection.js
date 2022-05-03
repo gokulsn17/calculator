@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import XRegExp from "xregexp";
 import { updateRedux, value, history } from '../Redux/reducers/reducer';
 
 const BottomSection = () =>{
@@ -57,6 +58,7 @@ const BottomSection = () =>{
     }
 
     const resultHandler = (result) => {
+        //console.log(XRegExp.matchRecursive("(t((e))s)t()(ing)", '\\(', '\\)', 'g'));
         if(result.length === 0){
             dispatch(updateRedux({
                 key:"errorText",
@@ -71,10 +73,11 @@ const BottomSection = () =>{
             trignometricHandler()
         } else {
             if(result.includes("(") && result.includes(")")){
-                dispatch(updateRedux({
-                    key:"errorText",
-                    result: "sorry we are working on calculations inluding paranthesis"
-                }))
+                outputHandler(result.replaceAll(" ",""))
+                // dispatch(updateRedux({
+                //     key:"errorText",
+                //     result: "sorry we are working on calculations inluding paranthesis"
+                // }))
             } else{
                 let parsed = parseString(result);
                 if(parsed){
@@ -159,14 +162,46 @@ const BottomSection = () =>{
         }
     }
 
+    const outputHandler = (str) => {
+        try {
+            let temp = str;
+            let arr = XRegExp.matchRecursive(str.toString(), '\\(', '\\)', 'g');
+            console.log(arr) 
+            arr?.forEach(e => {
+                if(e.includes("(") && e.includes(")")){
+                    dispatch(updateRedux({
+                        key:"errorText",
+                        result: "complex operation we are working on this"
+                    }))
+                } else {
+                    let res = calculateResult(parseString(e));
+                    temp = temp.replace(`(${e})`,res);
+                }
+            })
+            let res = calculateResult(parseString(temp));
+            dispatch(updateRedux({
+                key:"history",
+                result: [...undoArray,{[str]:res}]
+            }))
+            dispatch(updateRedux({
+                key:"value",
+                result: res
+            }))
+         } catch (error) {
+             dispatch(updateRedux({
+                 key:"errorText",
+                 result: "missing Brackets please check"
+             }))
+         }
+    }
+
     return(
         <div className = "d-flex ">
             {
                 data.map((item, i) => {
                     return(
-                      <div className = "w-20 boxStyle">
+                      <div className = "w-20 boxStyle" key = {i}>
                         <div 
-                            key = {i}
                             className = "numberButtonStyle"
                             onClick = {() => inputHandler(item)}
                         >
