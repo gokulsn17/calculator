@@ -54,11 +54,14 @@ const BottomSection = () =>{
     }
 
     const endsWithNumber = (str) => {
-        return str.charAt(str.length-1) === ")" ? true : isNaN(str.slice(-1)) ? false : true;
+        return str.charAt(str.length ? str.length-1 : 0) === ")" 
+                ? true 
+                : isNaN(str.slice(-1)) 
+                ? false 
+                : true;
     }
 
     const resultHandler = (result) => {
-        //console.log(XRegExp.matchRecursive("(t((e))s)t()(ing)", '\\(', '\\)', 'g'));
         if(result.length === 0){
             dispatch(updateRedux({
                 key:"errorText",
@@ -74,10 +77,6 @@ const BottomSection = () =>{
         } else {
             if(result.includes("(") && result.includes(")")){
                 outputHandler(result.replaceAll(" ",""))
-                // dispatch(updateRedux({
-                //     key:"errorText",
-                //     result: "sorry we are working on calculations inluding paranthesis"
-                // }))
             } else{
                 let parsed = parseString(result);
                 if(parsed){
