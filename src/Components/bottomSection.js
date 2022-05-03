@@ -53,9 +53,9 @@ const BottomSection = () =>{
     }
 
     const endsWithNumber = (str) => {
-        return str.charAt(str.length-1) == ")" ? true : isNaN(str.slice(-1)) ? false : true;
+        return str.charAt(str.length-1) === ")" ? true : isNaN(str.slice(-1)) ? false : true;
     }
-    
+
     const resultHandler = (result) => {
         if(result.length === 0){
             dispatch(updateRedux({
@@ -78,7 +78,7 @@ const BottomSection = () =>{
             } else{
                 let parsed = parseString(result);
                 if(parsed){
-                    let output = calculate(parsed);
+                    let output = calculateResult(parsed);
                     if(output){
                         dispatch(updateRedux({
                             key:"history",
@@ -106,27 +106,29 @@ const BottomSection = () =>{
 
     const parseString = (s) => {
 
-        var calculation = [],
+        var calculateResult = [],
         current = '';
-        for (var i = 0, ch; ch = s.charAt(i); i++) {
-            if ('^*/+-'.indexOf(ch) > -1) {
-                if (current == '' && ch == '-') {
+
+        // eslint-disable-next-line
+        for(var i = 0, ch; ch = s.charAt(i); i++) {
+            if('^*/+-'.indexOf(ch) > -1) {
+                if(current === '' && ch === '-') {
                     current = '-';
                 } else {
-                    calculation.push(parseFloat(current), ch);
+                    calculateResult.push(parseFloat(current), ch);
                     current = '';
                 }
             } else {
                 current += s.charAt(i);
             }
         }
-        if (current != '') {
-            calculation.push(parseFloat(current));
+        if(current !== '') {
+            calculateResult.push(parseFloat(current));
         }
-        return calculation;
+        return calculateResult;
     }
     
-    const calculate = (data) => {
+    const calculateResult = (data) => {
 
         let operators = [
             {'^': (a, b) => Math.pow(a, b)},
