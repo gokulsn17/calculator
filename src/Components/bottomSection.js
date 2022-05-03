@@ -38,7 +38,7 @@ const BottomSection = () =>{
         if(output){
             dispatch(updateRedux({
                 key:"history",
-                result: [...undoArray,{result:output}]
+                result: [...undoArray,{[result]:output}]
             }))
             dispatch(updateRedux({
                 key:"value",
@@ -58,7 +58,7 @@ const BottomSection = () =>{
                 let output = calculate(parsed);
                 dispatch(updateRedux({
                     key:"history",
-                    result: [...undoArray,{result:output}]
+                    result: [...undoArray,{[result]:output}]
                 }))
                 if(output){
                     dispatch(updateRedux({
