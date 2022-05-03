@@ -7,6 +7,9 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
+    "babel-jest": "^21.2.0",
+    "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
     "react": "^18.1.0",
     "react-bootstrap": "^2.3.1",
     "react-dom": "^18.1.0",
@@ -14,7 +17,8 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xregexp": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "enzyme-adapter-react-16": "^1.15.6"
   }
 }
