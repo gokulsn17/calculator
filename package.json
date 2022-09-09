@@ -1,7 +1,7 @@
 {
   "name": "calculator",
   "version": "0.1.0",
-  "homepage": "https://github.com/gokulsn17/calculator.git",
+  "homepage": "https://gokulsn17.github.io/calculator",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
