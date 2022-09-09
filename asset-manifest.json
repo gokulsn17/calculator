@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/gokulsn17/calculator.git/static/css/main.4efb37a3.css",
-    "main.js": "/gokulsn17/calculator.git/static/js/main.7de3e00a.js",
-    "static/js/27.35bf4669.chunk.js": "/gokulsn17/calculator.git/static/js/27.35bf4669.chunk.js",
-    "index.html": "/gokulsn17/calculator.git/index.html"
+    "main.css": "/calculator/static/css/main.4efb37a3.css",
+    "main.js": "/calculator/static/js/main.6e2c73b1.js",
+    "static/js/27.35bf4669.chunk.js": "/calculator/static/js/27.35bf4669.chunk.js",
+    "index.html": "/calculator/index.html"
   },
   "entrypoints": [
     "static/css/main.4efb37a3.css",
-    "static/js/main.7de3e00a.js"
+    "static/js/main.6e2c73b1.js"
   ]
 }
