@@ -1,6 +1,7 @@
 {
   "name": "calculator",
   "version": "0.1.0",
+  "homepage": "https://github.com/gokulsn17/calculator.git",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
@@ -8,6 +9,7 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "babel-jest": "^21.2.0",
+    "gh-pages": "^4.0.0",
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
     "react": "^18.1.0",
@@ -21,6 +23,8 @@
     "xregexp": "^5.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
